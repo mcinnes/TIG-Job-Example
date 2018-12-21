@@ -12,10 +12,20 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    // return $router->app->version();
+    return view('upload');
+
 });
+
+$router->get('profile', [
+    'as' => 'profile', 'uses' => 'UploadController@view'
+]);
+
+$router->post('process', [
+    'as' => 'process', 'uses' => 'UploadController@store'
+]);
 
 //Route to show final product
 $router->get('/view/{id}', function ($id) use ($router) {
-    return $id;
+    return view('view', ['id' => $id]);
 });
