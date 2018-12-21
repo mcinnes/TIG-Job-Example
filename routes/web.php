@@ -15,6 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+//Route to show final product
 $router->get('/view/{id}', function ($id) use ($router) {
     return $id;
 });
