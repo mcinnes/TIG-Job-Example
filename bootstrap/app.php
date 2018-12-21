@@ -28,7 +28,7 @@ $app->configure('filesystems');
 
 $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
