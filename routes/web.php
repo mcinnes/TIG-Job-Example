@@ -17,11 +17,11 @@ $router->get('/', function () use ($router) {
 
 });
 
-$router->get('profile', [
+$router->get('upload', [
     'as' => 'profile', 'uses' => 'UploadController@view'
 ]);
 
-$router->post('process', [
+$router->post('upload/saved', [
     'as' => 'process', 'uses' => 'UploadController@store'
 ]);
 

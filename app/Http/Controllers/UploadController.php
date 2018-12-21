@@ -23,8 +23,9 @@ class UploadController extends Controller
 
     public function store(Request $request)
     {
-        $storagePath = Storage::disk('s3')->put("ulogoploads", $request->logo, 'public');
-        return view('upload.success');
+        $storagePath = Storage::disk('s3')->put("pre-process", $request->photo, 'public');
+
+        return view('upload.success', ['id' => $storagePath]);
 
     }
 
