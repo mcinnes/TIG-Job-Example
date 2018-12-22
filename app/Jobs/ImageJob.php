@@ -2,16 +2,19 @@
 
 namespace App\Jobs;
 
+use App\Image;
+
 class ImageJob extends Job
 {
+    protected $image;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Image $image)
     {
-        //
+        $this->image = $image;
     }
 
     /**
@@ -22,6 +25,7 @@ class ImageJob extends Job
     public function handle()
     {
         //Do something with the image?
+        error_log($this->image);
 
     }
 }
