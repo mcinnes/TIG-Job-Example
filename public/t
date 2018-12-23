@@ -1,0 +1,66 @@
+$storagePathPrefix  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+
+        //Save the image to S3 using built in storage functionality
+        $storagePath = Storage::disk('s3')->put("pre-process", $request->photo, 'public');
+
+        //Create our new image
+        $image = new Image();
+        $image->contact = $request->contact;
+        $image->s3_id = $storagePath;
+        $image->save();
+
+        error_log("saved");
+        //ImageJob::dispatch($image);
+        //Queue::push(new ImageJob($image));
+        //$job = (new ImageJob($image))->delay(2);
+
+         //$this->dispatch($job);
+
+         $storagePath2 = Storage::disk('local')->url('border.png');
+         $s3url = Storage::disk('s3')->url($image->s3_id);
+         
+
+         file_put_contents("/tmp/image.png", fopen($s3url, 'r'));
+
+         $editor = Grafika::createEditor();
+
+        // $editor->open( $image1, "/tmp/image.png" );
+        // $editor->resizeExact( $image1, 200, 200 );
+        // $editor->save( $image1, $storagePathPrefix."/finished.png", null, 90 );
+
+        $image1 = Grafika::createImage( $storagePathPrefix."border.png" );
+        $image2 = Grafika::createImage( "/tmp/image.png" );
+        $editor->blend( $image2, $image1, 'normal', 0.5, 'center' ); // overlay blend, opacity 50%, center position
+        $editor->save( $image1, $storagePathPrefix."/finished.png");
+
+        $storagePath3 = Storage::disk('s3')->put("post-process4.png", Storage::disk('local')->get('finished.png'), 'public');
+
+        //  list($srcWidth, $srcHeight) = getimagesize($s3url);
+        //  $src_xPosition = 10; //10 pixels from the left
+        //  $src_yPosition = 10; //10 pixels from the top
+         
+        //  //set the x and y positions of the source image to be copied to the destination image
+        //  $src_cropXposition = 0; //do not crop at the side
+        //  $src_cropYposition = 0; //do not crop on the top
+        //  $srcTransparency = 50; //the higher the clearer, max is 100
+
+        //  /*
+        //   * get the index of the color of a pixel of the source image (imagecolorat),
+        //   * and define a color as transparent (imagecolortransparent)
+        //   */
+        //  imagecolortransparent($src,imagecolorat($src,0,0));
+                                 
+        //  //merge the source and destination images
+        //  imagecopymerge($dest,$src,$src_xPosition,$src_yPosition,$src_cropXposition,$src_cropYposition,$srcWidth,$srcHeight,$srcTransparency);
+         
+
+        // //  imagealphablending($dest, false);
+        // //  imagesavealpha($dest, true);
+         
+        // //  imagecopymerge($dest, $src, 0, 0, 0, 0, 0, 0, 0); //have to play with these numbers for it to work for you, etc.
+         
+        //  header('Content-Type: image/png');
+        //  imagepng($dest);
+         
+        //  imagedestroy($dest);
+        //  imagedestroy($src);

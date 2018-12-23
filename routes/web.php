@@ -25,7 +25,7 @@ $router->post('upload/saved', [
     'as' => 'process', 'uses' => 'UploadController@store'
 ]);
 
-//Route to show final product
-$router->get('/view/{id}', function ($id) use ($router) {
-    return view('view', ['id' => $id]);
-});
+
+$router->get('/view/{id}', [
+    'as' => 'profile', 'uses' => 'ViewController@view'
+]);

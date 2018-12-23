@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "633043ce31e716d6a2c7f091bbd0f589",
+    "content-hash": "e8e1612e41dc2544cc913112e8708b5c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.82.2",
+            "version": "3.82.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "015d5f3a24054f773df1d3fc16bba49f8c05987e"
+                "reference": "a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/015d5f3a24054f773df1d3fc16bba49f8c05987e",
-                "reference": "015d5f3a24054f773df1d3fc16bba49f8c05987e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7",
+                "reference": "a0353c24b18d2ba0f5bb7ca8a478b4ce0b8153f7",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-12-20T23:01:17+00:00"
+            "time": "2018-12-21T22:21:50+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1500,6 +1500,47 @@
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
             "time": "2018-11-02T14:57:34+00:00"
+        },
+        {
+            "name": "kosinix/grafika",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kosinix/grafika.git",
+                "reference": "211f61fc334b8b36616b23e8af7c5727971d96ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kosinix/grafika/zipball/211f61fc334b8b36616b23e8af7c5727971d96ee",
+                "reference": "211f61fc334b8b36616b23e8af7c5727971d96ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grafika\\": "src/Grafika"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nico Amarilla",
+                    "homepage": "https://www.kosinix.com"
+                }
+            ],
+            "description": "An image manipulation library for PHP.",
+            "homepage": "http://kosinix.github.io/grafika",
+            "keywords": [
+                "grafika"
+            ],
+            "time": "2017-06-20T03:13:49+00:00"
         },
         {
             "name": "laravel/lumen-framework",
@@ -4692,7 +4733,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "kosinix/grafika": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

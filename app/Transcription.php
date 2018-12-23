@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Transcription extends Model
 {
-    protected $table = 'images';
+    protected $table = 'transcriptions';
 
     /**
      * The attributes that are mass assignable.
@@ -14,7 +14,7 @@ class Image extends Model
      * @var array
      */
     protected $fillable = [
-        'contact', 's3_id',
+        'contact', 's3_id', 'text', 'voice',
     ];
 
     
